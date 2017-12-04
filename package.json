@@ -28,7 +28,8 @@
 	},
 	"devDependencies": {
 		"tap-min": "^1.2.2",
-		"tape": "^4.8.0"
+		"tape": "^4.8.0",
+		"unist-builder": "^1.0.2"
 	},
 	"scripts": {
 		"test": "node test.js | tap-min",
