@@ -1,16 +1,16 @@
-# hast-to-snabbdom
+# hast-util-to-snabbdom
 
 **Transform a [HAST](https://github.com/syntax-tree/hast/blob/master/readme.md) into a [Snabbdom](https://github.com/snabbdom/snabbdom#snabbdom) tree.**
 
-[![npm version](https://img.shields.io/npm/v/hast-to-snabbdom.svg)](https://www.npmjs.com/package/hast-to-snabbdom)
-[![build status](https://api.travis-ci.org/syntax-tree/hast-to-snabbdom.svg?branch=master)](https://travis-ci.org/syntax-tree/hast-to-snabbdom)
-![license](https://img.shields.io/github/license/syntax-tree/hast-to-snabbdom.svg)
+[![npm version](https://img.shields.io/npm/v/hast-util-to-snabbdom.svg)](https://www.npmjs.com/package/hast-util-to-snabbdom)
+[![build status](https://api.travis-ci.org/syntax-tree/hast-util-to-snabbdom.svg?branch=master)](https://travis-ci.org/syntax-tree/hast-util-to-snabbdom)
+![license](https://img.shields.io/github/license/syntax-tree/hast-util-to-snabbdom.svg)
 
 
 ## Installing
 
 ```shell
-npm install hast-to-snabbdom
+npm install hast-util-to-snabbdom
 ```
 
 
@@ -40,7 +40,7 @@ const uTree = u('element', {
 Let's convert it into a [Snabbdom](https://github.com/snabbdom/snabbdom#snabbdom) tree and print the result:
 
 ```js
-const toSnabbdom = require('hast-to-snabbdom')
+const toSnabbdom = require('hast-util-to-snabbdom')
 const util = require('util')
 
 const sTree = toSnabbdom(uTree)

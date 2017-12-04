@@ -1,5 +1,5 @@
 {
-	"name": "hast-to-snabbdom",
+	"name": "hast-util-to-snabbdom",
 	"description": "Transform a HAST into a Snabbdom tree.",
 	"version": "0.1.2",
 	"main": "index.js",
@@ -14,9 +14,9 @@
 		"virtual dom"
 	],
 	"author": "Jannis R <mail@jannisr.de>",
-	"homepage": "https://github.com/syntax-tree/hast-to-snabbdom",
-	"repository": "syntax-tree/hast-to-snabbdom",
-	"bugs": "https://github.com/syntax-tree/hast-to-snabbdom/issues",
+	"homepage": "https://github.com/syntax-tree/hast-util-to-snabbdom",
+	"repository": "syntax-tree/hast-util-to-snabbdom",
+	"bugs": "https://github.com/syntax-tree/hast-util-to-snabbdom/issues",
 	"license": "ISC",
 	"engines": {
 		"node": ">=6"
