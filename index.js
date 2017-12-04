@@ -7,13 +7,20 @@ const h = require('snabbdom/h').default
 
 const hasProp = Object.prototype.hasOwnProperty
 
+const divWrapper = (children) => {
+	return {type: 'element', tagName: 'div', properties: {}, children}
+}
+
 const toSnabbdom = (uTree) => {
 	if (typeof uTree !== 'object' || Array.isArray(uTree)) {
 		throw new Error('uTree must be an object')
 	}
 
-	// todo: handle `root` root node
-	// todo: handle `comment` root node
+	if (uTree.type === 'root') {
+		const c = uTree.children
+		if (!Array.isArray(c) || c.length === 0) return null
+		uTree = c.length === 1 ? c[0] : divWrapper(c)
+	} else if (uTree.type === 'comment') return null
 
 	return convert(uTree)
 }

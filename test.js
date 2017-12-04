@@ -115,6 +115,37 @@ test('handles lists', (t) => {
 	t.end()
 })
 
+test('handles `root` root node', (t) => {
+	const h1 = u('element', {
+		tagName: 'h1',
+		properties: {}
+	}, [
+		u('text', 'foo')
+	])
+	const p = u('element', {
+		tagName: 'p',
+		properties: {id: 'foo'}
+	}, [
+		u('text', 'bar')
+	])
+
+	const uTreeWith1 = u('root', {}, [p])
+	const uTreeWith2 = u('root', {}, [h1, p])
+
+	t.deepEqual(toSnabbdom(u('root', {}, [])), null)
+	t.deepEqual(toSnabbdom(uTreeWith1), s('p#foo', {}, ['bar']))
+	t.deepEqual(toSnabbdom(uTreeWith2), s('div', {}, [
+		s('h1', {}, ['foo']),
+		s('p#foo', {}, ['bar'])
+	]))
+	t.end()
+})
+
+test('handles `comment` root node', (t) => {
+	t.equal(toSnabbdom(u('comment', 'foo')), null)
+	t.end()
+})
+
 test('more complex tree', (t) => {
 	const uTree = u('element', {tagName: 'h1'}, [
 		u('text', 'hey there!'),

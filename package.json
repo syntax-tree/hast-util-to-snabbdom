@@ -1,7 +1,7 @@
 {
 	"name": "hast-to-snabbdom",
 	"description": "Transform a HAST into a Snabbdom tree.",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"main": "index.js",
 	"files": [
 		"index.js"
