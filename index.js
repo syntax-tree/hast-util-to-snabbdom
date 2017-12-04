@@ -2,6 +2,7 @@
 
 const propInfo = require('property-information')
 const kebabCase = require('kebab-case')
+const parseStyle = require('style-attr').parse
 const h = require('snabbdom/h').default
 
 const hasProp = Object.prototype.hasOwnProperty
@@ -24,6 +25,7 @@ const convert = (node) => {
 
 	let selector = node.tagName
 	const data = {}
+	const dataset = Object.create(null)
 
 	const props = node.properties || {}
 	if (props.id) selector += '#' + props.id
@@ -33,7 +35,7 @@ const convert = (node) => {
 	}
 
 	if (typeof props.style === 'string') {
-		if (props.style) {} // todo: parse style, assign to data.style
+		if (props.style) data.style = parseStyle(props.style)
 	} else if (typeof props.style === 'object' && !Array.isArray(props.style)) {
 		data.style = props.style
 	}
@@ -43,6 +45,11 @@ const convert = (node) => {
 		if (prop === 'id' || prop === 'className' || prop === 'style') continue
 
 		let val = props[prop]
+		if (prop.slice(0, 5) === 'data-') {
+			dataset[prop.slice(5)] = val
+			continue
+		}
+
 		const info = propInfo(prop) || {}
 
 		// ignore nully, `false`, `NaN` and falsey known booleans
@@ -52,7 +59,7 @@ const convert = (node) => {
 			val === false ||
 			Number.isNaN(val) ||
 			(info.boolean && !val)
-		) return
+		) continue
 
 		if (Array.isArray(val)) {
 			val = info.commaSeparated ? val.join(', ') : val.join(' ')
@@ -67,6 +74,11 @@ const convert = (node) => {
 			const res = convert(child)
 			if (res !== null && res !== undefined) children.push(res)
 		}
+	}
+
+	for (let k in dataset) {
+		data.dataset = dataset
+		break
 	}
 
 	return h(selector, data, children)
