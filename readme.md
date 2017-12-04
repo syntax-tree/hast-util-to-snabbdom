@@ -1,5 +1,7 @@
 # hast-to-snabbdom
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/derhuerst/hast-to-snabbdom.svg)](https://greenkeeper.io/)
+
 **Transform a [HAST](https://github.com/syntax-tree/hast/blob/master/readme.md) into a [Snabbdom](https://github.com/snabbdom/snabbdom#snabbdom) tree.**
 
 [![npm version](https://img.shields.io/npm/v/hast-to-snabbdom.svg)](https://www.npmjs.com/package/hast-to-snabbdom)
