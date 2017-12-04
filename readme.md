@@ -17,8 +17,60 @@ npm install hast-to-snabbdom
 
 ## Usage
 
+This is our input [HTML Abstract Syntax Tree (HAST)](https://github.com/syntax-tree/hast/blob/master/readme.md):
+
 ```js
-todo
+const u = require('unist-builder')
+
+const uTree = u('element', {
+	tagName: 'form',
+	properties: {
+		id: 'a',
+		className: ['b', 'c']
+	}
+}, [
+	u('text', 'hey there!'),
+	u('comment', 'i am a comment'),
+	u('element', {
+		tagName: 'input',
+		properties: {type: 'file'}
+	}, [])
+])
+```
+
+Let's convert it into a [Snabbdom](https://github.com/snabbdom/snabbdom#snabbdom) tree and print the result:
+
+```js
+const toSnabbdom = require('hast-to-snabbdom')
+const util = require('util')
+
+const sTree = toSnabbdom(uTree)
+console.log(util.inspect(sTree, {depth: Infinity}))
+```
+
+```js
+{
+	sel: 'form#a.b.c',
+	data: {},
+	children: [ {
+		sel: undefined,
+		data: undefined,
+		children: undefined,
+		text: 'hey there!',
+		elm: undefined,
+		key: undefined
+	}, {
+		sel: 'input',
+		data: {type: 'file'},
+		children: [],
+		text: undefined,
+		elm: undefined,
+		key: undefined
+	} ],
+	text: undefined,
+	elm: undefined,
+	key: undefined
+}
 ```
 
 
