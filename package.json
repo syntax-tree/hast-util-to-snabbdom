@@ -22,6 +22,9 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"kebab-case": "^1.0.0",
+		"property-information": "^3.2.0",
+		"snabbdom": "^0.7.0"
 	},
 	"devDependencies": {
 		"tap-min": "^1.2.2",
