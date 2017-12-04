@@ -4,7 +4,7 @@ const u = require('unist-builder')
 const s = require('snabbdom/h').default
 const test = require('tape')
 
-const toSnabbdom = require('.')
+const toSnabbdom = require('./lib')
 
 test('should throw on invalid usage', (t) => {
   t.throws(() => toSnabbdom())

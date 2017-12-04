@@ -2,9 +2,10 @@
 	"name": "hast-util-to-snabbdom",
 	"description": "Transform a HAST into a Snabbdom tree.",
 	"version": "0.1.2",
-	"main": "index.js",
+	"main": "lib/index.js",
 	"files": [
-		"index.js"
+		"src",
+		"lib"
 	],
 	"keywords": [
 		"hast",
@@ -22,6 +23,8 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-preset-env": "^1.6.1",
 		"kebab-case": "^1.0.0",
 		"property-information": "^3.2.0",
 		"snabbdom": "^0.7.0",
@@ -34,8 +37,9 @@
 		"unist-builder": "^1.0.2"
 	},
 	"scripts": {
+		"transpile": "babel src --out-dir lib",
 		"test": "node test.js | tap-min",
-		"lint": "standard",
-		"prepublishOnly": "npm test && npm run lint"
+		"lint": "standard src",
+		"prepublishOnly": "npm run transpile && npm test && npm run lint"
 	}
 }
