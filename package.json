@@ -1,7 +1,7 @@
 {
 	"name": "hast-to-snabbdom",
 	"description": "Transform a HAST into a Snabbdom tree.",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"main": "index.js",
 	"files": [
 		"index.js"
@@ -14,9 +14,9 @@
 		"virtual dom"
 	],
 	"author": "Jannis R <mail@jannisr.de>",
-	"homepage": "https://github.com/derhuerst/hast-to-snabbdom",
-	"repository": "derhuerst/hast-to-snabbdom",
-	"bugs": "https://github.com/derhuerst/hast-to-snabbdom/issues",
+	"homepage": "https://github.com/syntax-tree/hast-to-snabbdom",
+	"repository": "syntax-tree/hast-to-snabbdom",
+	"bugs": "https://github.com/syntax-tree/hast-to-snabbdom/issues",
 	"license": "ISC",
 	"engines": {
 		"node": ">=6"

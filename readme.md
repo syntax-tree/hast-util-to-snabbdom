@@ -3,9 +3,8 @@
 **Transform a [HAST](https://github.com/syntax-tree/hast/blob/master/readme.md) into a [Snabbdom](https://github.com/snabbdom/snabbdom#snabbdom) tree.**
 
 [![npm version](https://img.shields.io/npm/v/hast-to-snabbdom.svg)](https://www.npmjs.com/package/hast-to-snabbdom)
-[![build status](https://api.travis-ci.org/derhuerst/hast-to-snabbdom.svg?branch=master)](https://travis-ci.org/derhuerst/hast-to-snabbdom)
-![ISC-licensed](https://img.shields.io/github/license/derhuerst/hast-to-snabbdom.svg)
-[![chat on gitter](https://badges.gitter.im/derhuerst.svg)](https://gitter.im/derhuerst)
+[![build status](https://api.travis-ci.org/syntax-tree/hast-to-snabbdom.svg?branch=master)](https://travis-ci.org/syntax-tree/hast-to-snabbdom)
+![license](https://img.shields.io/github/license/syntax-tree/hast-to-snabbdom.svg)
 
 
 ## Installing
@@ -74,6 +73,13 @@ console.log(util.inspect(sTree, {depth: Infinity}))
 ```
 
 
-## Contributing
+## Contribute
 
-If you have a question or have difficulties using `hast-to-snabbdom`, please double-check your code and setup first. If you think you have found a bug or want to propose a feature, refer to [the issues page](https://github.com/derhuerst/hast-to-snabbdom/issues).
+See [`contribute.md` in `syntax-tree/hast`][contribute] for ways to get
+started.
+
+This organisation has a [Code of Conduct][coc].  By interacting with this
+repository, organisation, or community you agree to abide by its terms.
+
+[contribute]: https://github.com/syntax-tree/hast/blob/master/contributing.md
+[coc]: https://github.com/syntax-tree/hast/blob/master/code-of-conduct.md
