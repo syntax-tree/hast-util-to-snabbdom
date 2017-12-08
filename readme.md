@@ -49,23 +49,30 @@ console.log(util.inspect(sTree, {depth: Infinity}))
 
 ```js
 {
-	sel: 'form#a.b.c',
-	data: {},
-	children: [ {
-		sel: undefined,
-		data: undefined,
-		children: undefined,
-		text: 'hey there!',
-		elm: undefined,
-		key: undefined
-	}, {
-		sel: 'input',
-		data: {type: 'file'},
-		children: [],
-		text: undefined,
-		elm: undefined,
-		key: undefined
-	} ],
+	sel: 'form',
+	data: {
+		attrs: {id: 'a', class: 'b c'}
+	},
+	children: [
+		{
+			sel: undefined,
+			data: undefined,
+			children: undefined,
+			text: 'hey there!',
+			elm: undefined,
+			key: undefined
+		},
+		{
+			sel: 'input',
+			data: {
+				attrs: {type: 'file'}
+			},
+			children: [],
+			text: undefined,
+			elm: undefined,
+			key: undefined
+		}
+	],
 	text: undefined,
 	elm: undefined,
 	key: undefined

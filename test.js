@@ -4,7 +4,7 @@ const u = require('unist-builder')
 const s = require('snabbdom/h').default
 const test = require('tape')
 
-const toSnabbdom = require('./lib')
+const toSnabbdom = require('./src')
 
 test('should throw on invalid usage', (t) => {
   t.throws(() => toSnabbdom())
@@ -34,25 +34,12 @@ test('handles id and classes', (t) => {
       className: ['b', 'c']
     }
   }, [])
-
-  t.deepEqual(toSnabbdom(uTree), s('p#a.b.c', {}, []))
-  t.end()
-})
-
-test('handles styles', (t) => {
-  const uTree = u('element', {
-    tagName: 'p',
-    properties: {
-      style: 'color: red; background-color: blue'
-    }
-  }, [])
   const expected = s('p', {
-    style: {
-      color: 'red',
-      'background-color': 'blue'
+    attrs: {
+      id: 'a',
+      class: 'b c'
     }
   }, [])
-  // console.error(require('util').inspect(expected, {depth: Infinity}))
 
   t.deepEqual(toSnabbdom(uTree), expected)
   t.end()
@@ -68,16 +55,18 @@ test('handles case', (t) => {
     }
   }, [])
   const expected = s('input', {
-    'camel-case': 'foo',
-    'accept-charset': 'bar',
-    'aria-valuenow': '1'
+    attrs: {
+      'camel-case': 'foo',
+      'accept-charset': 'bar',
+      'aria-valuenow': '1'
+    }
   }, [])
 
   t.deepEqual(toSnabbdom(uTree), expected)
   t.end()
 })
 
-test('handles data-*', (t) => {
+test('passes through data-*', (t) => {
   const uTree = u('element', {
     tagName: 'p',
     properties: {
@@ -86,9 +75,9 @@ test('handles data-*', (t) => {
     }
   }, [])
   const expected = s('p', {
-    dataset: {
-      foo: 'a',
-      'bar-baz': 'b'
+    attrs: {
+      'data-foo': 'a',
+      'data-bar-baz': 'b'
     }
   }, [])
 
@@ -106,9 +95,11 @@ test('handles lists', (t) => {
     }
   }, [])
   const expected = s('input', {
-    type: 'file',
-    foo: 'on off',
-    accept: '.jpg, .jpeg'
+    attrs: {
+      type: 'file',
+      foo: 'on off',
+      accept: '.jpg, .jpeg'
+    }
   }, [])
 
   t.deepEqual(toSnabbdom(uTree), expected)
@@ -123,8 +114,7 @@ test('handles `root` root node', (t) => {
     u('text', 'foo')
   ])
   const p = u('element', {
-    tagName: 'p',
-    properties: {id: 'foo'}
+    tagName: 'p'
   }, [
     u('text', 'bar')
   ])
@@ -133,10 +123,10 @@ test('handles `root` root node', (t) => {
   const uTreeWith2 = u('root', {}, [h1, p])
 
   t.deepEqual(toSnabbdom(u('root', {}, [])), null)
-  t.deepEqual(toSnabbdom(uTreeWith1), s('p#foo', {}, ['bar']))
+  t.deepEqual(toSnabbdom(uTreeWith1), s('p', {}, ['bar']))
   t.deepEqual(toSnabbdom(uTreeWith2), s('div', {}, [
     s('h1', {}, ['foo']),
-    s('p#foo', {}, ['bar'])
+    s('p', {}, ['bar'])
   ]))
   t.end()
 })
@@ -158,7 +148,8 @@ test('more complex tree', (t) => {
       tagName: 'input',
       properties: {
         type: 'file',
-        name: 'baz'
+        name: 'baz',
+        style: 'color: red; background-color: blue'
       }
     }, [])
   ])
@@ -167,7 +158,13 @@ test('more complex tree', (t) => {
     'hey there!',
     s('p', {}, ['foo']),
     'bar',
-    s('input', {type: 'file', name: 'baz'}, [])
+    s('input', {
+      attrs: {
+        type: 'file',
+        name: 'baz',
+        style: 'color: red; background-color: blue'
+      }
+    }, [])
   ])
 
   const actualSTree = toSnabbdom(uTree)
