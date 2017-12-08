@@ -2,7 +2,6 @@
 
 const propInfo = require('property-information')
 const kebabCase = require('kebab-case')
-const parseStyle = require('style-attr').parse
 const h = require('snabbdom/h').default
 
 const hasProp = Object.prototype.hasOwnProperty
@@ -30,33 +29,20 @@ const convert = (node) => {
   // ignoring `comment` and `doctype` nodes
   if (node.type !== 'element') return null
 
-  let selector = node.tagName
   const data = {}
-  const dataset = Object.create(null)
+  const attrs = {}
 
   const props = node.properties || {}
-  if (props.id) selector += '#' + props.id
-  if (props.className) {
-    const c = props.className
-    selector += '.' + (Array.isArray(c) ? c.join('.') : c) // todo: empty arr
-  }
-
   if (typeof props.style === 'string') {
-    if (props.style) data.style = parseStyle(props.style)
+    if (props.style) attrs.style = props.style
   } else if (typeof props.style === 'object' && !Array.isArray(props.style)) {
     data.style = props.style
   }
 
   for (let prop in props) {
     if (!hasProp.call(props, prop)) continue
-    if (prop === 'id' || prop === 'className' || prop === 'style') continue
 
     let val = props[prop]
-    if (prop.slice(0, 5) === 'data-') {
-      dataset[prop.slice(5)] = val
-      continue
-    }
-
     const info = propInfo(prop) || {}
 
     // ignore nully, `false`, `NaN` and falsey known booleans
@@ -72,7 +58,7 @@ const convert = (node) => {
       val = info.commaSeparated ? val.join(', ') : val.join(' ')
     }
 
-    data[info.name || kebabCase(prop)] = val
+    attrs[info.name || kebabCase(prop)] = val
   }
 
   const children = []
@@ -83,9 +69,8 @@ const convert = (node) => {
     }
   }
 
-  if (Object.keys(dataset).length > 0) data.dataset = dataset
-
-  return h(selector, data, children)
+  if (Object.keys(attrs).length > 0) data.attrs = attrs
+  return h(node.tagName, data, children)
 }
 
 module.exports = toSnabbdom
