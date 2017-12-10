@@ -80,6 +80,13 @@ console.log(util.inspect(sTree, {depth: Infinity}))
 ```
 
 
+## Related
+
+- [hast-to-hyperscript](https://github.com/syntax-tree/hast-to-hyperscript) – Transform HAST to something else through a hyperscript DSL
+- [snabbdom](https://github.com/snabbdom/snabbdom) – A virtual DOM library with focus on simplicity, modularity, powerful features and performance.
+- [HAST](https://github.com/syntax-tree/hast) – *H*ypertext *A*bstract *S*yntax *T*ree format.
+
+
 ## Contribute
 
 See [`contribute.md` in `syntax-tree/hast`][contribute] for ways to get
