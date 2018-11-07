@@ -43,7 +43,7 @@ const convert = (node) => {
     if (!hasProp.call(props, prop)) continue
 
     let val = props[prop]
-    const info = propInfo(prop) || {}
+    const info = propInfo.find(propInfo.html, prop) || {}
 
     // ignore nully, `false`, `NaN` and falsey known booleans
     if (
@@ -58,7 +58,7 @@ const convert = (node) => {
       val = info.commaSeparated ? val.join(', ') : val.join(' ')
     }
 
-    attrs[info.name || kebabCase(prop)] = val
+    attrs[info.attribute] = val
   }
 
   const children = []

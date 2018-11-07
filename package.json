@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "kebab-case": "^1.0.0",
-    "property-information": "^3.2.0",
+    "property-information": "^5.0.0",
     "snabbdom": "^0.7.0"
   },
   "devDependencies": {

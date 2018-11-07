@@ -56,7 +56,7 @@ test('handles case', (t) => {
   }, [])
   const expected = s('input', {
     attrs: {
-      'camel-case': 'foo',
+      camelCase: 'foo',
       'accept-charset': 'bar',
       'aria-valuenow': '1'
     }
