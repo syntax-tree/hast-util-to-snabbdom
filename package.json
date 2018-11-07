@@ -23,22 +23,64 @@
     "lib"
   ],
   "dependencies": {
+    "hastscript": "^5.0.0",
     "kebab-case": "^1.0.0",
     "property-information": "^5.0.0",
     "snabbdom": "^0.7.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "standard": "^11.0.0",
-    "tap-min": "^1.2.2",
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "nyc": "^13.1.0",
+    "prettier": "^1.14.3",
+    "remark-cli": "^6.0.0",
+    "remark-preset-wooorm": "^4.0.0",
     "tape": "^4.8.0",
-    "unist-builder": "^1.0.2"
+    "unist-builder": "^1.0.2",
+    "xo": "^0.23.0"
   },
   "scripts": {
-    "transpile": "babel src --out-dir lib",
-    "test": "node test.js | tap-min",
-    "lint": "standard src",
-    "prepublishOnly": "npm run transpile && npm test && npm run lint"
+    "prepublishOnly": "npm run build",
+    "build": "babel src --out-dir lib",
+    "format": "remark . -qfo && prettier \"**/*.js\" --write && xo --fix",
+    "test-api": "node test",
+    "test-coverage": "nyc --reporter lcov tape test.js",
+    "test": "npm run build && npm run format && npm run test-coverage"
+  },
+  "browserslist": "> 2.5%, node 6",
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "semi": false,
+    "trailingComma": "none"
+  },
+  "xo": {
+    "prettier": true,
+    "rules": {
+      "complexity": "off"
+    },
+    "ignore": [
+      "lib/**/*.js"
+    ]
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 100,
+    "functions": 100,
+    "branches": 100
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-wooorm"
+    ]
   }
 }
