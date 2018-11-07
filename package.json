@@ -24,8 +24,6 @@
     "lib"
   ],
   "dependencies": {
-    "hastscript": "^5.0.0",
-    "kebab-case": "^1.0.0",
     "property-information": "^5.0.0",
     "snabbdom": "^0.7.0"
   },
