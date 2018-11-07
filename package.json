@@ -17,7 +17,8 @@
     "Jannis Redmann <mail@jannisr.de>",
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
-  "main": "lib/index.js",
+  "main": "lib/",
+  "module": "src/",
   "files": [
     "src",
     "lib"
@@ -33,6 +34,7 @@
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/register": "^7.0.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
     "nyc": "^13.1.0",
     "prettier": "^1.14.3",
     "remark-cli": "^6.0.0",
@@ -45,14 +47,17 @@
     "prepublishOnly": "npm run build",
     "build": "babel src --out-dir lib",
     "format": "remark . -qfo && prettier \"**/*.js\" --write && xo --fix",
-    "test-api": "node test",
-    "test-coverage": "nyc --reporter lcov tape test.js",
+    "test-api": "node -r @babel/register test",
+    "test-coverage": "nyc --reporter lcov --require @babel/register tape test.js",
     "test": "npm run build && npm run format && npm run test-coverage"
   },
   "browserslist": "> 2.5%, node 6",
   "babel": {
     "presets": [
       "@babel/preset-env"
+    ],
+    "plugins": [
+      "add-module-exports"
     ]
   },
   "prettier": {

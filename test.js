@@ -1,10 +1,9 @@
 'use strict'
 
-const u = require('unist-builder')
-const s = require('snabbdom/h').default
-const test = require('tape')
-
-const toSnabbdom = require('./src')
+import u from 'unist-builder'
+import s from 'snabbdom/h'
+import test from 'tape'
+import toSnabbdom from './src'
 
 test('should throw on invalid usage', t => {
   t.throws(() => toSnabbdom())

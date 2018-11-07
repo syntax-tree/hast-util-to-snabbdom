@@ -1,7 +1,7 @@
 'use strict'
 
-const propInfo = require('property-information')
-const h = require('snabbdom/h').default
+import {html, find} from 'property-information'
+import h from 'snabbdom/h'
 
 const own = Object.prototype.hasOwnProperty
 
@@ -9,7 +9,7 @@ const divWrapper = children => {
   return {type: 'element', tagName: 'div', properties: {}, children}
 }
 
-const toSnabbdom = uTree => {
+export default function toSnabbdom(uTree) {
   if (typeof uTree !== 'object' || Array.isArray(uTree)) {
     throw new TypeError('uTree must be an object')
   }
@@ -50,7 +50,7 @@ const convert = node => {
     /* istanbul ignore else - Doesn’t matter */
     if (own.call(props, prop)) {
       let val = props[prop]
-      const info = propInfo.find(propInfo.html, prop)
+      const info = find(html, prop)
 
       // ignore nully, `false`, `NaN` and falsey known booleans
       if (
@@ -85,5 +85,3 @@ const convert = node => {
   }
   return h(node.tagName, data, children)
 }
-
-module.exports = toSnabbdom
