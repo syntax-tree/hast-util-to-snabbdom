@@ -1,44 +1,44 @@
 {
-	"name": "hast-util-to-snabbdom",
-	"description": "Transform a HAST into a Snabbdom tree.",
-	"version": "0.1.4",
-	"main": "lib/index.js",
-	"files": [
-		"src",
-		"lib"
-	],
-	"keywords": [
-		"hast",
-		"ast",
-		"html",
-		"snabbdom",
-		"virtual dom"
-	],
-	"author": "Jannis R <mail@jannisr.de>",
-	"homepage": "https://github.com/syntax-tree/hast-util-to-snabbdom",
-	"repository": "syntax-tree/hast-util-to-snabbdom",
-	"bugs": "https://github.com/syntax-tree/hast-util-to-snabbdom/issues",
-	"license": "ISC",
-	"engines": {
-		"node": ">=6"
-	},
-	"dependencies": {
-		"kebab-case": "^1.0.0",
-		"property-information": "^3.2.0",
-		"snabbdom": "^0.7.0"
-	},
-	"devDependencies": {
-		"babel-cli": "^6.26.0",
-		"babel-preset-env": "^1.6.1",
-		"standard": "^11.0.0",
-		"tap-min": "^1.2.2",
-		"tape": "^4.8.0",
-		"unist-builder": "^1.0.2"
-	},
-	"scripts": {
-		"transpile": "babel src --out-dir lib",
-		"test": "node test.js | tap-min",
-		"lint": "standard src",
-		"prepublishOnly": "npm run transpile && npm test && npm run lint"
-	}
+  "name": "hast-util-to-snabbdom",
+  "version": "0.1.4",
+  "description": "Transform a HAST into a Snabbdom tree.",
+  "license": "ISC",
+  "keywords": [
+    "hast",
+    "ast",
+    "html",
+    "snabbdom",
+    "virtual dom"
+  ],
+  "repository": "syntax-tree/hast-util-to-snabbdom",
+  "bugs": "https://github.com/syntax-tree/hast-util-to-snabbdom/issues",
+  "author": "Jannis Redmann <mail@jannisr.de>",
+  "contributors": [
+    "Jannis Redmann <mail@jannisr.de>",
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
+  ],
+  "main": "lib/index.js",
+  "files": [
+    "src",
+    "lib"
+  ],
+  "dependencies": {
+    "kebab-case": "^1.0.0",
+    "property-information": "^3.2.0",
+    "snabbdom": "^0.7.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "standard": "^11.0.0",
+    "tap-min": "^1.2.2",
+    "tape": "^4.8.0",
+    "unist-builder": "^1.0.2"
+  },
+  "scripts": {
+    "transpile": "babel src --out-dir lib",
+    "test": "node test.js | tap-min",
+    "lint": "standard src",
+    "prepublishOnly": "npm run transpile && npm test && npm run lint"
+  }
 }
