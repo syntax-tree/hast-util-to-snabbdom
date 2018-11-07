@@ -1,10 +1,6 @@
-sudo: false
 language: node_js
 node_js:
-  - 'stable'
-  - '8'
-  - '6'
+- lts/boron
+- node
 script:
-  - 'npm run transpile'
-  - 'npm test'
-  - 'npm run lint'
+- npm test
