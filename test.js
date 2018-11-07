@@ -213,7 +213,31 @@ test('more complex tree', t => {
     )
   ])
 
-  const actualSTree = toSnabbdom(uTree)
-  t.deepEqual(actualSTree, expected)
+  t.deepEqual(toSnabbdom(uTree), expected)
+  t.end()
+})
+
+test('style as an object', t => {
+  const uTree = u(
+    'element',
+    {
+      tagName: 'div',
+      properties: {
+        style: {color: 'red', 'background-color': 'blue'}
+      }
+    },
+    []
+  )
+
+  const expected = s(
+    'div',
+    {
+      style: {color: 'red', 'background-color': 'blue'},
+      attrs: {style: {color: 'red', 'background-color': 'blue'}}
+    },
+    []
+  )
+
+  t.deepEqual(toSnabbdom(uTree), expected)
   t.end()
 })

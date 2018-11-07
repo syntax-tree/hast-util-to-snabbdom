@@ -3,7 +3,7 @@
 const propInfo = require('property-information')
 const h = require('snabbdom/h').default
 
-const hasProp = Object.prototype.hasOwnProperty
+const own = Object.prototype.hasOwnProperty
 
 const divWrapper = children => {
   return {type: 'element', tagName: 'div', properties: {}, children}
@@ -40,47 +40,43 @@ const convert = node => {
   const attrs = {}
 
   const props = node.properties || {}
-  if (typeof props.style === 'string') {
-    if (props.style) {
-      attrs.style = props.style
-    }
+  if (typeof props.style === 'string' && props.style) {
+    attrs.style = props.style
   } else if (typeof props.style === 'object' && !Array.isArray(props.style)) {
     data.style = props.style
   }
 
   for (const prop in props) {
-    if (!hasProp.call(props, prop)) {
-      continue
+    /* istanbul ignore else - Doesn’t matter */
+    if (own.call(props, prop)) {
+      let val = props[prop]
+      const info = propInfo.find(propInfo.html, prop)
+
+      // ignore nully, `false`, `NaN` and falsey known booleans
+      if (
+        val === null ||
+        val === undefined ||
+        val === false ||
+        Number.isNaN(val) ||
+        (info.boolean && !val)
+      ) {
+        continue
+      }
+
+      if (Array.isArray(val)) {
+        val = info.commaSeparated ? val.join(', ') : val.join(' ')
+      }
+
+      attrs[info.attribute] = val
     }
-
-    let val = props[prop]
-    const info = propInfo.find(propInfo.html, prop) || {}
-
-    // ignore nully, `false`, `NaN` and falsey known booleans
-    if (
-      val === null ||
-      val === undefined ||
-      val === false ||
-      Number.isNaN(val) ||
-      (info.boolean && !val)
-    ) {
-      continue
-    }
-
-    if (Array.isArray(val)) {
-      val = info.commaSeparated ? val.join(', ') : val.join(' ')
-    }
-
-    attrs[info.attribute] = val
   }
 
   const children = []
-  if (Array.isArray(node.children)) {
-    for (const child of node.children) {
-      const res = convert(child)
-      if (res !== null && res !== undefined) {
-        children.push(res)
-      }
+
+  for (const child of node.children) {
+    const res = convert(child)
+    if (res !== null && res !== undefined) {
+      children.push(res)
     }
   }
 
