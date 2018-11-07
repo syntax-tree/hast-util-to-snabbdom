@@ -73,8 +73,6 @@ A Snabbdom node.
 *   [snabbdom](https://github.com/snabbdom/snabbdom)
     — A virtual DOM library with focus on simplicity, modularity, powerful
     features and performance
-*   [hast](https://github.com/syntax-tree/hast)
-    – \_H_ypertext \_A_bstract \_S_yntax \_T_ree format
 
 ## Contribute
 
