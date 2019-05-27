@@ -19,6 +19,7 @@ export default function toSnabbdom(uTree) {
     if (!Array.isArray(c) || c.length === 0) {
       return null
     }
+
     uTree = c.length === 1 ? c[0] : divWrapper(c)
   } else if (uTree.type === 'comment') {
     return null
@@ -31,6 +32,7 @@ const convert = node => {
   if (node.type === 'text') {
     return node.value
   }
+
   // Ignoring `comment` and `doctype` nodes
   if (node.type !== 'element') {
     return null
@@ -83,5 +85,6 @@ const convert = node => {
   if (Object.keys(attrs).length > 0) {
     data.attrs = attrs
   }
+
   return h(node.tagName, data, children)
 }
