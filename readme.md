@@ -70,6 +70,12 @@ Transform the given [**hast**][hast] [*tree*][tree] to a
 
 A Snabbdom node.
 
+## Security
+
+Use of `hast-util-to-snabbdom` can open you up to a
+[cross-site scripting (XSS)][xss] attack if the hast tree is unsafe.
+Use [`hast-util-santize`][sanitize] to make the hast tree safe.
+
 ## Related
 
 *   [hast-to-hyperscript](https://github.com/syntax-tree/hast-to-hyperscript)
@@ -143,3 +149,7 @@ abide by its terms.
 [node]: https://github.com/syntax-tree/hast#nodes
 
 [snabbdom]: https://github.com/snabbdom/snabbdom#snabbdom
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[sanitize]: https://github.com/syntax-tree/hast-util-sanitize
