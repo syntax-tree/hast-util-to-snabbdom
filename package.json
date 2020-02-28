@@ -1,6 +1,6 @@
 {
   "name": "hast-util-to-snabbdom",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "hast utility to transform to a Snabbdom tree",
   "license": "ISC",
   "keywords": [
