@@ -1,14 +1,21 @@
 {
   "name": "hast-util-to-snabbdom",
   "version": "1.0.1",
-  "description": "Transform a HAST into a Snabbdom tree.",
+  "description": "hast utility to transform to a Snabbdom tree",
   "license": "ISC",
   "keywords": [
+    "unist",
     "hast",
-    "ast",
+    "hast-util",
+    "util",
+    "utility",
     "html",
+    "ast",
+    "tree",
     "snabbdom",
-    "virtual dom"
+    "virtual",
+    "dom",
+    "vdom"
   ],
   "repository": "syntax-tree/hast-util-to-snabbdom",
   "bugs": "https://github.com/syntax-tree/hast-util-to-snabbdom/issues",
