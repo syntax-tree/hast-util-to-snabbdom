@@ -12,6 +12,10 @@
   ],
   "repository": "syntax-tree/hast-util-to-snabbdom",
   "bugs": "https://github.com/syntax-tree/hast-util-to-snabbdom/issues",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/unified"
+  },
   "author": "Jannis Redmann <mail@jannisr.de>",
   "contributors": [
     "Jannis Redmann <mail@jannisr.de>",
