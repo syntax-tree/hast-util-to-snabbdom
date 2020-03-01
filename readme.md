@@ -78,16 +78,16 @@ Use [`hast-util-santize`][sanitize] to make the hast tree safe.
 
 ## Related
 
-*   [hast-to-hyperscript](https://github.com/syntax-tree/hast-to-hyperscript)
-    — Transform hast to something else through a hyperscript DSL
-*   [hast-util-to-html](https://github.com/syntax-tree/hast-util-to-html)
-    — Transform to HTML
-*   [hast-util-to-parse5](https://github.com/syntax-tree/hast-util-to-parse5)
-    — Transform to Parse5’s AST
-*   [hast-util-to-dom](https://github.com/syntax-tree/hast-util-to-dom)
-    — Transform to a DOM tree
-*   [snabbdom](https://github.com/snabbdom/snabbdom)
-    — Virtual DOM library with focus on simplicity, modularity, powerful
+*   [`hast-to-hyperscript`](https://github.com/syntax-tree/hast-to-hyperscript)
+    — transform to something else through a hyperscript DSL
+*   [`hast-util-to-html`](https://github.com/syntax-tree/hast-util-to-html)
+    — serialize to HTML
+*   [`hast-util-to-parse5`](https://github.com/syntax-tree/hast-util-to-parse5)
+    — transform to Parse5’s AST
+*   [`hast-util-to-dom`](https://github.com/syntax-tree/hast-util-to-dom)
+    — transform to a DOM tree
+*   [`snabbdom`](https://github.com/snabbdom/snabbdom)
+    — virtual DOM library with focus on simplicity, modularity, powerful
     features and performance
 
 ## Contribute
