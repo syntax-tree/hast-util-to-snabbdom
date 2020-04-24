@@ -5,7 +5,7 @@ import h from 'snabbdom/h'
 
 const own = Object.prototype.hasOwnProperty
 
-const divWrapper = children => {
+const divWrapper = (children) => {
   return {type: 'element', tagName: 'div', properties: {}, children}
 }
 
@@ -28,7 +28,7 @@ export default function toSnabbdom(uTree) {
   return convert(uTree)
 }
 
-const convert = node => {
+const convert = (node) => {
   if (node.type === 'text') {
     return node.value
   }
@@ -51,34 +51,34 @@ const convert = node => {
   for (const prop in props) {
     /* istanbul ignore else - Doesn’t matter */
     if (own.call(props, prop)) {
-      let val = props[prop]
+      let value = props[prop]
       const info = find(html, prop)
 
       // ignore nully, `false`, `NaN` and falsey known booleans
       if (
-        val === null ||
-        val === undefined ||
-        val === false ||
-        Number.isNaN(val) ||
-        (info.boolean && !val)
+        value === null ||
+        value === undefined ||
+        value === false ||
+        Number.isNaN(value) ||
+        (info.boolean && !value)
       ) {
         continue
       }
 
-      if (Array.isArray(val)) {
-        val = info.commaSeparated ? val.join(', ') : val.join(' ')
+      if (Array.isArray(value)) {
+        value = info.commaSeparated ? value.join(', ') : value.join(' ')
       }
 
-      attrs[info.attribute] = val
+      attrs[info.attribute] = value
     }
   }
 
   const children = []
 
   for (const child of node.children) {
-    const res = convert(child)
-    if (res !== null && res !== undefined) {
-      children.push(res)
+    const result = convert(child)
+    if (result !== null && result !== undefined) {
+      children.push(result)
     }
   }
 

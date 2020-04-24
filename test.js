@@ -5,14 +5,14 @@ import s from 'snabbdom/h'
 import test from 'tape'
 import toSnabbdom from './src'
 
-test('should throw on invalid usage', t => {
+test('should throw on invalid usage', (t) => {
   t.throws(() => toSnabbdom())
   t.throws(() => toSnabbdom('bar'))
 
   t.end()
 })
 
-test('removes invalid & unknown falsy props', t => {
+test('removes invalid & unknown falsy props', (t) => {
   const uTree = u(
     'element',
     {
@@ -29,7 +29,7 @@ test('removes invalid & unknown falsy props', t => {
   t.end()
 })
 
-test('handles id and classes', t => {
+test('handles id and classes', (t) => {
   const uTree = u(
     'element',
     {
@@ -56,7 +56,7 @@ test('handles id and classes', t => {
   t.end()
 })
 
-test('handles case', t => {
+test('handles case', (t) => {
   const uTree = u(
     'element',
     {
@@ -85,7 +85,7 @@ test('handles case', t => {
   t.end()
 })
 
-test('passes through data-*', t => {
+test('passes through data-*', (t) => {
   const uTree = u(
     'element',
     {
@@ -112,7 +112,7 @@ test('passes through data-*', t => {
   t.end()
 })
 
-test('handles lists', t => {
+test('handles lists', (t) => {
   const uTree = u(
     'element',
     {
@@ -141,7 +141,7 @@ test('handles lists', t => {
   t.end()
 })
 
-test('handles `root` root node', t => {
+test('handles `root` root node', (t) => {
   const h1 = u(
     'element',
     {
@@ -170,12 +170,12 @@ test('handles `root` root node', t => {
   t.end()
 })
 
-test('handles `comment` root node', t => {
+test('handles `comment` root node', (t) => {
   t.equal(toSnabbdom(u('comment', 'foo')), null)
   t.end()
 })
 
-test('more complex tree', t => {
+test('more complex tree', (t) => {
   const uTree = u('element', {tagName: 'h1'}, [
     u('text', 'hey there!'),
     u('comment', 'i am a comment'),
@@ -216,7 +216,7 @@ test('more complex tree', t => {
   t.end()
 })
 
-test('style as an object', t => {
+test('style as an object', (t) => {
   const uTree = u(
     'element',
     {
