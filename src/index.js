@@ -54,7 +54,7 @@ const convert = (node) => {
       let value = props[prop]
       const info = find(html, prop)
 
-      // ignore nully, `false`, `NaN` and falsey known booleans
+      // ignore nullish, `false`, `NaN` and falsey known booleans
       if (
         value === null ||
         value === undefined ||
