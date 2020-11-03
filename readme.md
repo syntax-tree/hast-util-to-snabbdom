@@ -104,9 +104,9 @@ abide by its terms.
 
 [ISC][license] © [Jannis Redmann][author]
 
-[build-badge]: https://img.shields.io/travis/syntax-tree/hast-util-to-snabbdom.svg
+[build-badge]: https://github.com/syntax-tree/hast-util-to-snabbdom/workflows/main/badge.svg
 
-[build]: https://travis-ci.org/syntax-tree/hast-util-to-snabbdom
+[build]: https://github.com/syntax-tree/hast-util-to-snabbdom/actions
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/syntax-tree/hast-util-to-snabbdom.svg
 
